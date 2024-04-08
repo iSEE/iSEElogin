@@ -16,8 +16,8 @@
   # nocov start
   output[[.ui_form_overview]] <- renderUI({
     tagList(
-      textInput(inputId = .ui_login_username, label = "Username", placeholder = "Required"),
-      textInput(inputId = .ui_login_password, label = "Password", placeholder = "Required"),
+      textInput(inputId = .ui_login_username, label = "Username", value = "testuser", placeholder = "Required"),
+      textInput(inputId = .ui_login_password, label = "Password", value = "abcd1234", placeholder = "Required"),
       actionButton(inputId = .ui_login_submit, label = "Submit")
     )
   })

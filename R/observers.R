@@ -37,7 +37,11 @@
   observeEvent(input[[.ui_login_submit]], {
     username <- input[[.ui_login_username]]
     password <- input[[.ui_login_password]]
-    .launch_isee(FUN, session, pObjects, username, password)
+    if (.authenticate(username, password)) {
+      .launch_isee(FUN, session, pObjects, username, password)
+    } else {
+      showNotification("Login failed.", type="error")
+    }
   }, ignoreNULL=TRUE, ignoreInit=TRUE)
   # nocov end
   

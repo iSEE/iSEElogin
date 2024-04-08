@@ -77,27 +77,18 @@ iSEElogin <- function(app.title = NULL) {
   # nocov start
   initial <- NULL # TODO
   tour <- NULL # TODO
-  withProgress(message = sprintf("Logging in ..."),
-    value = 0, max = 3, {
-      incProgress(1, detail = "Verifying credentials")
-      Sys.sleep(2)
-      if (!.authenticate(username, password)) {
-        showNotification("Login failed.", type="error")
-      } else {
-        incProgress(1, detail = "Loading data set")
-        se2 <- SummarizedExperiment() # TODO: load desired data set (or another landing page like iSEEindex)
-        incProgress(1, detail = "Launching iSEE app")
-        FUN(SE=se2, INITIAL=initial, TOUR=tour)
-        shinyjs::enable(iSEE:::.generalOrganizePanels) # organize panels
-        shinyjs::enable(iSEE:::.generalLinkGraph) # link graph
-        shinyjs::enable(iSEE:::.generalExportOutput) # export content
-        shinyjs::enable(iSEE:::.generalCodeTracker) # tracked code
-        shinyjs::enable(iSEE:::.generalPanelSettings) # panel settings
-        shinyjs::enable(iSEE:::.generalVignetteOpen) # open vignette
-        shinyjs::enable(iSEE:::.generalSessionInfo) # session info
-        shinyjs::enable(iSEE:::.generalCitationInfo) # citation info
-      }
-    }, session = session)
+  
+  se2 <- SummarizedExperiment() # TODO: load desired data set (or another landing page like iSEEindex)
+  incProgress(1, detail = "Launching iSEE app")
+  FUN(SE=se2, INITIAL=initial, TOUR=tour)
+  shinyjs::enable(iSEE:::.generalOrganizePanels) # organize panels
+  shinyjs::enable(iSEE:::.generalLinkGraph) # link graph
+  shinyjs::enable(iSEE:::.generalExportOutput) # export content
+  shinyjs::enable(iSEE:::.generalCodeTracker) # tracked code
+  shinyjs::enable(iSEE:::.generalPanelSettings) # panel settings
+  shinyjs::enable(iSEE:::.generalVignetteOpen) # open vignette
+  shinyjs::enable(iSEE:::.generalSessionInfo) # session info
+  shinyjs::enable(iSEE:::.generalCitationInfo) # citation info
   
   invisible(NULL)
   # nocov end
