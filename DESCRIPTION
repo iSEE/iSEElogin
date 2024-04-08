@@ -1,5 +1,5 @@
 Package: iSEElogin
-Title: iSEE extension for a landing page to a custom collection of data sets
+Title: iSEE extension for a landing page presenting a login form
 Version: 0.99.0
 Date: 2024-04-08
 Authors@R: 
