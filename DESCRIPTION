@@ -1,0 +1,48 @@
+Package: iSEElogin
+Title: iSEE extension for a landing page to a custom collection of data sets
+Version: 0.99.0
+Date: 2024-04-08
+Authors@R: 
+    c(person("Kevin", "Rue-Albrecht", email = "kevinrue67@gmail.com",
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0003-3899-3872")))
+Description: This package provides a landing page that protects the main app
+  behind a login page. The main functionality of this package is to define a
+  custom landing page that presents users with a login form. Users cannot create
+  new accounts. Instead, the landing page must be accompanied by a file
+  encrypting a predefined set of usernames and passwords authorised to log in.
+License: Artistic-2.0
+URL: https://github.com/iSEE/iSEEindex
+BugReports: https://support.bioconductor.org/t/iSEEindex
+biocViews: Software,
+    Infrastructure
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Depends:
+    SummarizedExperiment,
+    SingleCellExperiment
+Imports:
+    BiocFileCache,
+    DT,
+    iSEE,
+    methods,
+    paws.storage,
+    rintrojs,
+    shiny,
+    shinydashboard,
+    shinyjs,
+    stringr,
+    urltools,
+    utils
+Suggests: 
+    BiocStyle,
+    covr,
+    knitr,
+    RefManageR,
+    rmarkdown,
+    sessioninfo,
+    testthat (>= 3.0.0),
+    yaml
+Config/testthat/edition: 3
+VignetteBuilder: knitr

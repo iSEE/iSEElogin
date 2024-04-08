@@ -1,0 +1,14 @@
+.Rproj.user
+*.Rproj
+dev/
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+inst/doc
+.Rprofile
+renv
+renv.lock
+docs
+/doc/
+/Meta/
