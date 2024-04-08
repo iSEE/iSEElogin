@@ -69,21 +69,23 @@ iSEElogin <- function(app.title = NULL) {
 #' @author Kevin Rue-Albrecht
 #'
 #' @importFrom utils capture.output
-#' @importFrom shiny incProgress markdown modalDialog p showModal
-#' showNotification withProgress
+#' @importFrom shiny incProgress showNotification withProgress
 #' @importFrom shinyjs enable
 #'
 #' @rdname INTERNAL_launch_isee
-.launch_isee <- function(FUN, session, pObjects) {
+.launch_isee <- function(FUN, session, pObjects, username, password) {
   # nocov start
+  initial <- NULL # TODO
+  tour <- NULL # TODO
   withProgress(message = sprintf("Logging in ..."),
-    value = 0, max = 2, {
+    value = 0, max = 3, {
       incProgress(1, detail = "Verifying credentials")
       Sys.sleep(2)
-      se2 <- try(iseelogin) # TODO
-      if (is(se2, "try-error")) {
+      if (!.authenticate(username, password)) {
         showNotification("Login failed.", type="error")
       } else {
+        incProgress(1, detail = "Loading data set")
+        se2 <- SummarizedExperiment() # TODO: load desired data set (or another landing page like iSEEindex)
         incProgress(1, detail = "Launching iSEE app")
         FUN(SE=se2, INITIAL=initial, TOUR=tour)
         shinyjs::enable(iSEE:::.generalOrganizePanels) # organize panels

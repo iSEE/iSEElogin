@@ -21,8 +21,8 @@
 #'
 #' @rdname INTERNAL_create_observers
 .create_observers <- function(input, session, pObjects, rObjects) {
-
-    invisible(NULL)
+  
+  invisible(NULL)
 }
 
 #' @param FUN A function to initialize the \pkg{iSEE} observer
@@ -32,12 +32,14 @@
 #'
 #' @rdname INTERNAL_create_observers
 .create_launch_observers <- function(FUN, input, session, pObjects) {
-
-    # nocov start
-    observeEvent(input[[.ui_login_submit]], {
-        .launch_isee(FUN, session, pObjects)
-    }, ignoreNULL=TRUE, ignoreInit=TRUE)
-    # nocov end
-
-    invisible(NULL)
+  
+  # nocov start
+  observeEvent(input[[.ui_login_submit]], {
+    username <- input[[.ui_login_username]]
+    password <- input[[.ui_login_password]]
+    .launch_isee(FUN, session, pObjects, username, password)
+  }, ignoreNULL=TRUE, ignoreInit=TRUE)
+  # nocov end
+  
+  invisible(NULL)
 }
